@@ -16,6 +16,8 @@ let addSquare = component.make('Add Square', 'button', 'add-button');
 pageElements.push(addSquare);
 let deleteSquare = component.make('Delete Square', 'button', 'delete-button');
 pageElements.push(deleteSquare);
+let moveSquareRight = component.make('Move Right', 'button', 'move-right-button');
+pageElements.push(moveSquareRight);
 
 pageElements.forEach((element) => {
   run(element);
@@ -30,6 +32,9 @@ function run(piece) {
 
 addSquare.addEventListener('click', (e) => {
   square.draw();
+});
+moveSquareRight.addEventListener('click', (e) => {
+  square.moveRight();
 });
 deleteSquare.addEventListener('click', (e) => {
   square.deleteSquare();

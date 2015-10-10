@@ -6,6 +6,7 @@ class Square {
     this.width = width;
     this.height = height;
     this.color = color;
+    this.numRight = 0;
   }
 
   draw() {
@@ -17,13 +18,21 @@ class Square {
   }
 
   moveRight() {
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(this.posY, this.posX, this.width, this.height);
 
+    ctx.fillStyle = this.color;
+    this.posY = this.posY + 40;
+    this.numRight += 1;
+    ctx.fillRect(this.posY, this.posX, this.width, this.height);
   }
 
   deleteSquare() {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
-    ctx.clearRect(10,10,50,50);
+    ctx.clearRect(this.posY, this.posX, this.width, this.height);
+    this.posY = this.posY - (40 * this.numRight);
   }
 
 }
